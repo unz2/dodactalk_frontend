@@ -1,13 +1,39 @@
+import kakaoLogo from "../assets/real_logo.png";
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL as string
+const KAKAO_CALLBACK_URI = `${API_BASE.replace('/api/v1', '')}/api/v1/auth/kakao/callback`
+
 const KAKAO_AUTH_URL =
   `https://kauth.kakao.com/oauth/authorize?response_type=code` +
   `&client_id=${import.meta.env.VITE_KAKAO_REST_API_KEY}` +
-  `&redirect_uri=${encodeURIComponent(import.meta.env.VITE_KAKAO_REDIRECT_URI)}`
+  `&redirect_uri=${encodeURIComponent(KAKAO_CALLBACK_URI)}`
 
 export default function LoginPage() {
   return (
     <div className="page">
       <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         <div>
+          <div
+            style={{
+              width: 84,
+              height: 84,
+              borderRadius: "50%",
+              overflow: "hidden",
+              margin: "0 auto 14px",
+              border: "1px solid rgba(153,169,136,0.35)",
+              boxShadow: "0 6px 14px rgba(0,0,0,0.08)",
+              background: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={kakaoLogo}
+              alt="도닥톡 로고"
+              style={{ width: "82%", height: "82%", objectFit: "contain", display: "block" }}
+            />
+          </div>
           <div className="service-title">도닥톡</div>
           <div className="service-subtitle">마음이 힘들 때, 조용히 곁에 있을게요</div>
         </div>
